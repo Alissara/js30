@@ -23,6 +23,8 @@
 // console.log(toyota.drive());
 // console.log(toyota.honk());
 
+//////////////////////////////////////
+
 class Car {
   constructor({ title }) {
     this.title = title;
@@ -56,3 +58,21 @@ console.log(toyota.drive());
 
 var newObject = new Object();
 var newObject2 = Object.create();
+
+////////////////////////////////////
+
+function fn(msg) {
+  console.log(msg + this);
+}
+
+var obj = {
+  obfn: fn
+};
+
+var person = {
+  name: 'Max'
+};
+
+obj.obfn.bind(person, 'Hello')(); // can invoke function later
+obj.obfn.call(person, 'Hello');   // instantly invokes the function
+obj.obfn.apply(person, ['Hello']);
